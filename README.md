@@ -66,10 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
+----
+*** 此处使用了node代理，需要手动启动进入 server文件夹 执行node proxy.js
 
 ### react-srcipt 内的 webpack.config.js的alias添加  '@': path.resolve('src'),
 
 ### 使用withRouter方法加工需要触发路由跳转的组件  Footer组件 卡了一天了  获取不到props通过这个解决
 
->>> 为啥antd-mobile 的幻灯片那么多报错。辣鸡嘛。
+> 为啥antd-mobile 的幻灯片那么多报错。辣鸡嘛。
