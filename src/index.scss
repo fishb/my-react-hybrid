@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/*每个页面公共css */
+* {
+  box-sizing: border-box;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+}
+button{
+  border: 0;
+}
+strong{
+  font-weight: normal;
+}
+#app{
+  width: 100%;
+  height: 100%;
+}
+$t-f8: #f8f8f8; //灰色背景
+$t-f: #ffffff; // 白色背景
+$t-c: #010101;  // 标题颜色
+$t-8: #888888;  // 文本颜色
+/** flex混入器 **/
+@mixin flexs($dir:column, $con: flex-start, $cen:center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $con;
+  align-items: $cen;
+}
+
+/** 单行文本省略号 或多行文本**/
+@mixin wrap($wrap:0) {
+  overflow: hidden;
+  @if $wrap!=0 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $wrap;
+      text-overflow: ellipsis;
+  }
+  @else {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  @include flexs;
+}
+
+.wrap {
+  @include flexs;
+}
+
+button{
+  &[disabled]:not([type]),
+  &[disabled][type="default"] {
+    background-color: #d1d1d1 !important;
+    color: $t-f !important;
+  }
+}
+.social-button {
+  width: 694upx;
+  padding: 0 28upx;
+  background-color: #141414;
+  text-align: center;
+  border-radius: 4upx;
+  font-size: 38upx;
+  color: $t-f;
+  border: 0;
+  &:after {
+    display: none;
+  }
+}

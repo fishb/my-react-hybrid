@@ -1,0 +1,63 @@
+$t-theme: #5199f4;
+$t-f8: #f8f8f8; //灰色背景
+$t-f: #ffffff; // 白色背景
+$t-c: #010101;  // 标题颜色
+$t-8: #888888;  // 文本颜色
+
+@function pxTorem($px) {
+  $rem: 75;
+  @return $px / $rem+rem;
+}
+
+/** flex混入器 **/
+@mixin flexs($dir:column, $con: flex-start, $cen:center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $con;
+  align-items: $cen;
+}
+
+@mixin wh($w, $h) {
+  @if $h !=auto {
+    height: pxTorem($h);
+  }
+
+  @else {
+    height: auto;
+  }
+
+  @if $w !=100% {
+    width: pxTorem($w);
+  }
+
+  @else {
+    width: 100%;
+  }
+}
+
+/** 单行文本省略号 或多行文本**/
+@mixin wrap($wrap:0) {
+  overflow: hidden;
+
+  @if $wrap !=0 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $wrap;
+    text-overflow: ellipsis;
+  }
+
+  @else {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// 审批common样式
+@mixin common($w, $h, $f, $c) {
+  @include wh($w, $h);
+  margin-bottom: pxTorem(30);
+  text-align: center;
+  line-height: pxTorem($h);
+  font-size: pxTorem($f);
+  color: $c;
+}

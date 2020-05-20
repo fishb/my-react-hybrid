@@ -1,0 +1,504 @@
+@import '@/utils/mixin.scss';
+.detail {
+    padding-bottom: pxTorem(120);
+    height: 100%;
+    background-color: $t-f8;
+    overflow-y: scroll;
+    &-title {
+        &-container {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: pxTorem(36);
+            color: #ffffff;
+            &-item {
+                font-size: pxTorem(30);
+                flex: 1;
+                text-align: center;
+                &.active {
+                    position: relative;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        width: 10%;
+                        height: pxTorem(6);
+                        background-color: #000000;
+                        left: 90%;
+                        bottom: pxTorem(-20);
+                        margin-left: -25%;
+                        transform: skew(-45deg);
+                        z-index: 999;
+                    }
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        width: 60%;
+                        height: pxTorem(6);
+                        background-color: #ff5e72;
+                        left: 50%;
+                        bottom: pxTorem(-20);
+                        margin-left: -30%;
+                        transform: skew(-45deg);
+                    }
+                }
+            }
+        }
+    }
+    .media {
+        width: 100%;
+        height: pxTorem(750);
+        position: relative;
+        &-swiper {
+            width: 100%;
+            height: pxTorem(750);
+            img,
+            video {
+                width: 100%;
+                height: pxTorem(750);
+            }
+        }
+        &-step {
+            width: pxTorem(100);
+            padding: pxTorem(10) 0;
+            position: absolute;
+            left: 50%;
+            margin-left: pxTorem(-50);
+            bottom: pxTorem(20);
+            z-index: 997;
+            background-color: $t-f;
+            border-radius: pxTorem(6);
+            @include flexs(row, center, center);
+            .num {
+                font-size: pxTorem(22);
+                color: #000000;
+            }
+            .dot {
+                font-size: pxTorem(12);
+                color: #999999;
+                margin: 0 pxTorem(10);
+            }
+        }
+        &-sales {
+            padding: pxTorem(10) pxTorem(20);
+            position: absolute;
+            right: pxTorem(30);
+            bottom: pxTorem(20);
+            background-color: $t-f;
+            border-radius: pxTorem(6);
+            font-size: pxTorem(22);
+            color: #000000;
+        }
+    }
+    &-info {
+        width: 100%;
+        padding: pxTorem(26);
+        background-color: $t-f;
+        @include flexs(column, space-between, flex-start);
+        &-price {
+            width: 100%;
+            @include flexs(row, flex-start, center);
+            .normal {
+                font-size: pxTorem(56);
+                color: #f10313;
+                .yen{
+                    font-size: pxTorem(32);
+                }
+            }
+            .line-through {
+                font-size: pxTorem(42);
+                color: #808080;
+                text-decoration: line-through;
+                margin: 0 pxTorem(14);
+            }
+        }
+        &-title {
+            width: 100%;
+            margin-top: pxTorem(20);
+            font-size: pxTorem(33);
+            color: #2B2B32;
+            font-family: ARoman;
+            @include wrap(2);
+        }
+        &-sale{
+            margin-bottom: .25rem;
+            font-size: .37rem;
+            line-height: .56rem;
+            color: #999;
+            word-break: break-word;
+            .sale-point{
+                margin-right: .1rem;
+                color: #ff5e72;
+            }
+        }
+    }
+    &-specs {
+        width: 100%;
+        padding: pxTorem(28) pxTorem(28) 0;
+        background-color: $t-f;
+        margin: pxTorem(20) auto;
+        @include flexs(column, space-between, flex-start);
+        &-item {
+            width: 100%;
+            padding: pxTorem(32) 0;
+            border-bottom: pxTorem(2) solid $t-f8;
+            @include flexs(row, space-between, flex-start);
+            &:last-child {
+                border-bottom: 0;
+            }
+            &.big {
+                padding-bottom: pxTorem(52);
+            }
+            span {
+                font-size: pxTorem(25);
+                color: #808080;
+            }
+            .specs-item-box {
+                flex: 1;
+                margin: 0 pxTorem(37);
+                @include flexs(column, center, flex-start);
+                .yh {
+                    font-size: pxTorem(27);
+                    color: #808080;
+                    span {
+                        color: #F8002C;
+                    }
+                }
+                .yh-box {
+                    width: 100%;
+                    margin-top: pxTorem(20);
+                    @include flexs(row, flex-start, center);
+                    flex-wrap: wrap;
+                    &-item {
+                        overflow: hidden;
+                        position: relative;
+                        display: flex;
+                        margin-right: pxTorem(15);
+                        span {
+                            border: pxTorem(1) solid #F8002C;
+                            padding: 0 pxTorem(16);
+                            line-height: pxTorem(44);
+                            font-size: pxTorem(23);
+                            color: #F8002C;
+                            box-sizing: border-box;
+                        }
+                        &:before,
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            width: pxTorem(20);
+                            height: pxTorem(20);
+                            background-color: $t-f;
+                            border: pxTorem(2) solid #F8002C;
+                            border-radius: 50%;
+                            top: 50%;
+                            margin-top: pxTorem(-14);
+                        }
+                        &:before {
+                            left: pxTorem(-10)
+                        }
+                        &:after {
+                            right: pxTorem(-10);
+                        }
+                    }
+                }
+                .title {
+                    font-size: pxTorem(25);
+                    color: #000000;
+                    @include wrap;
+                }
+                .label {
+                    font-size: pxTorem(21);
+                    color: #808080;
+                }
+            }
+        }
+    }
+    &-entry {
+        width: 100%;
+        height: pxTorem(100);
+        background-color: $t-f;
+        margin: pxTorem(20) auto;
+        padding: 0 pxTorem(28);
+        @include flexs(row, space-between, center);
+        font-size: pxTorem(25);
+        color: #000000;
+        span:last-child {
+            font-size: pxTorem(23);
+            color: #808080;
+        }
+    }
+    &-sales {
+        width: 100%;
+        height: pxTorem(125);
+        background-color: $t-f;
+        margin: pxTorem(20) auto;
+        padding: 0 pxTorem(28);
+        @include flexs(row, space-between, center);
+        img {
+            width: pxTorem(100);
+            height: pxTorem(100);
+        }
+        span {
+            flex: 1;
+            margin: 0 pxTorem(25);
+            @include wrap;
+            font-size: pxTorem(29);
+            color: #000000;
+        }
+        &-button {
+            color: #000000;
+            font-size: pxTorem(23);
+            line-height: pxTorem(50);
+            border: pxTorem(1) solid #000000;
+            background: transparent;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    &-init {
+        width: 100%;
+        background-color: $t-f;
+        margin: pxTorem(20) auto;
+        padding: 0 pxTorem(28);
+        @include flexs(column, space-between, flex-start);
+        &-title {
+            font-size: pxTorem(30);
+            color: #333333;
+            line-height: pxTorem(110);
+        }
+        &-main {
+            width: 100%;
+            @include flexs(column, space-between, flex-start);
+            overflow: hidden;
+            .init-main-item {
+                width: 100%;
+                height: pxTorem(70);
+                line-height: pxTorem(66);
+                @include flexs(row, space-between, center);
+                view {
+                    font-size: pxTorem(23);
+                    color: #888888;
+                    width: pxTorem(156);
+                    padding: 0 pxTorem(20);
+                    border-top: pxTorem(2) solid #EAEAEA;
+                    border-left: pxTorem(2) solid #EAEAEA;
+                    &:last-child {
+                        color: #333333;
+                        flex: 1;
+                        border-right: pxTorem(2) solid #EAEAEA;
+                    }
+                }
+                &:last-child {
+                    view {
+                        border-bottom: pxTorem(2) solid #EAEAEA;
+                    }
+                }
+            }
+        }
+        .init-main-control {
+            width: 100%;
+            padding: pxTorem(30) 0;
+            @include flexs(row, center, center);
+            font-size: pxTorem(24);
+            color: #333333;
+            span {
+                font-size: pxTorem(24);
+            }
+        }
+    }
+    .richspan {
+        width: 100%;
+    }
+    &-control {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: pxTorem(120);
+        background-color: $t-f;
+        @include flexs(row, space-between, center);
+        &-flex {
+            flex: 1;
+            @include flexs(row, space-around, center);
+            &-item {
+                position: relative;
+                @include flexs(column, space-between, center);
+                .bagenum{
+                    position: absolute;
+                    right: pxTorem(-20);
+                    top: pxTorem(-20);
+                }
+                img {
+                    width: pxTorem(50);
+                    height: pxTorem(50);
+                    margin-bottom: pxTorem(10);
+                }
+                span {
+                    font-size: pxTorem(21);
+                    color: #1A1A1A;
+                }
+            }
+        }
+        &-right{
+            display: flex;
+            align-items: stretch;
+            &-button {
+                border-radius: pxTorem(4);
+                color: $t-f;
+                font-size: pxTorem(28);
+                width: pxTorem(227);
+                line-height: pxTorem(83);
+                margin: 0 pxTorem(20) 0 0;
+                &:after {
+                    display: none;
+                }
+                &.default {
+                    background-color: #1A1A1A;
+                }
+                &.success {
+                    background-color: #F2012E;
+                }
+                &.warning {
+                    background-color: #E8C983;
+                }
+            }
+        }
+    }
+    .yhj {
+        width: 100%;
+        padding-bottom: pxTorem(188);
+        @include flexs(column, space-between, center);
+        &-title {
+            font-size: pxTorem(36);
+            color: #232323;
+            margin: pxTorem(36) 0;
+        }
+        &-content {
+            width: 100%;
+            padding: pxTorem(30);
+            @include flexs(column, space-between, flex-start);
+            .title {
+                font-size: pxTorem(29);
+                color: #232323;
+                line-height: pxTorem(29);
+            }
+            .list {
+                margin-top: pxTorem(29);
+                width: 100%;
+                @include flexs(column, flex-start, center);
+                &-item {
+                    width: 100%;
+                    height: pxTorem(178);
+                    margin-bottom: pxTorem(19);
+                    background-color: #FAFAFA;
+                    border: pxTorem(1) solid #E7E7E7;
+                    border-radius: pxTorem(8);
+                    @include flexs(row, space-between, center);
+                    &-face {
+                        width: pxTorem(188);
+                        height: 100%;
+                        @include flexs(column, center, center);
+                        .facevalue {
+                            font-size: pxTorem(58);
+                            color: #232323;
+                            span {
+                                font-size: pxTorem(29);
+                            }
+                        }
+                        .faceway {
+                            font-size: pxTorem(23);
+                            color: #8C8C8C;
+                        }
+                    }
+                    .line {
+                        width: pxTorem(2);
+                        height: 100%;
+                        border-right: pxTorem(1) dashed #E7E7E7;
+                        position: relative;
+                        &:before,
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            width: pxTorem(20);
+                            height: pxTorem(20);
+                            left: pxTorem(-10);
+                            border-radius: 50%;
+                            background-color: $t-f;
+                            z-index: 999;
+                        }
+                        &:before {
+                            top: pxTorem(-16);
+                        }
+                        &:after {
+                            bottom: pxTorem(-16);
+                        }
+                    }
+                    &-right {
+                        flex: 1;
+                        height: 100%;
+                        padding: 0 pxTorem(24);
+                        @include flexs(row, space-between, center);
+                        .item-flex {
+                            flex: 1;
+                            @include flexs(column, center, flex-start);
+                            .flex-title {
+                                font-size: pxTorem(27);
+                                font-weight: bold;
+                                color: #181818;
+                            }
+                            span {
+                                font-size: pxTorem(23);
+                                color: #6F6F6F;
+                            }
+                        }
+                        button {
+                            color: $t-f;
+                            font-size: pxTorem(25);
+                            border-radius: pxTorem(4);
+                            background: #F2012E;
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .address {
+        width: 100%;
+        padding-bottom: pxTorem(188);
+        @include flexs(column, space-between, center);
+        &-title {
+            font-size: pxTorem(36);
+            color: #232323;
+            padding: pxTorem(36) 0;
+            width: 100%;
+            border-bottom: pxTorem(2) solid #F5F5F5;
+            text-align: center;
+        }
+        &-list {
+            width: pxTorem(690);
+            padding: 0 pxTorem(30);
+            @include flexs(column, space-between, center);
+            .list-item {
+                width: 100%;
+                height: pxTorem(95);
+                border-bottom: pxTorem(2) solid #f5f5f5;
+                @include flexs(row, space-between, center);
+                span {
+                    font-size: pxTorem(33);
+                    color: #1D1D1D;
+                }
+                .map {
+                    flex: 1;
+                    margin: 0 pxTorem(12);
+                    @include wrap;
+                    max-width: pxTorem(560);
+                }
+            }
+        }
+    }
+}

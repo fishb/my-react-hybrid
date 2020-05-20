@@ -1,0 +1,107 @@
+@import '@/utils/mixin.scss';
+/** 为你推荐 **/
+.General{
+    width: 100%;
+    padding: 0 pxTorem(28);
+    //background: #f8f8f8;
+    @include flexs();
+    //overflow: hidden;
+    &-title{
+        margin: pxTorem(36) 0;
+        font-size: pxTorem(38);
+        color: #3D3D3D;
+        font-family: MicrosoftYaHei-Bold;
+        font-weight: bold;
+        line-height: pxTorem(33);
+        position: relative;
+        &:after,&:before{
+            content: '';
+            position: absolute;
+            right: pxTorem(-40);
+            top: pxTorem(12);
+            width: pxTorem(11);
+            height: pxTorem(14);
+            transform: skew(160deg);
+            background: #070707;
+        }
+        &:before{
+            left: pxTorem(-40);
+        }
+    }
+    &-box{
+        width: 100%;
+        @include flexs(row,flex-start,center);
+        flex-wrap: wrap;
+        &-item{
+            width: 48%;
+            @include flexs();
+            background: #ffffff;
+            border-radius: pxTorem(4);
+            margin-bottom: pxTorem(22);
+            &:nth-child(2n+1){
+                margin-right: pxTorem(22);
+            }
+            &-img{
+                width: pxTorem(334);
+                height: pxTorem(332);
+                img{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &-title{
+                width: 100%;
+                padding: 0 pxTorem(19);
+                margin: pxTorem(15) 0;
+                font-size: pxTorem(32);
+                font-family: MicrosoftYaHei;
+                font-weight: bold;
+                color: #3D3D3D;
+                @include wrap();
+            }
+            &-label{
+                width: 100%;
+                padding: 0 pxTorem(10);
+                @include flexs(row,flex-start,center);
+                span{
+                    padding: 0 pxTorem(5);
+                    border-radius: pxTorem(2);
+                    color: #999;
+                    font-size: pxTorem(19);
+                    font-family: MicrosoftYaHei;
+                    line-height: pxTorem(34);
+                    text-align: center;
+                }
+            }
+            &-price{
+                width: 100%;
+                padding: pxTorem(10) pxTorem(15);
+                @include flexs(column,flex-start,flex-start);
+                .old-price{
+                    font-size: pxTorem(25);
+                    font-family: MicrosoftYaHei;
+                    color: #f10313;
+                }
+                .new-price{
+                    @include flexs(row,flex-start,left);
+                    span{
+                        font-size: pxTorem(28);
+                        color: #2C2C2C;
+                        font-weight: bold;
+                        &.cgr{
+                            padding: 0 pxTorem(10);
+                            margin-left: pxTorem(12);
+                            background: #2C2C2C;
+                            font-size: pxTorem(17);
+                            color: #E8C983;
+                            font-weight: normal;
+                            line-height: pxTorem(36);
+                            transform: skew(160deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
