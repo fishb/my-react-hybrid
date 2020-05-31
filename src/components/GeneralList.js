@@ -7,7 +7,8 @@ export default class GeneralList extends React.Component {
     }
     generalitem = (list) => {
         return list.map((item, index) => {
-            return <div className="General-box-item" onClick={()=>this.props.Click({id:item.index})} key={index}>
+            let [spuId,skuId] = [item.href.split('https://shop.vivo.com.cn/wap/product/')[1].split('?colorSkuid=')[0]|| '',item.href.split('https://shop.vivo.com.cn/wap/product/')[1].split('?colorSkuid=')[1] || ''];
+            return <div className="General-box-item" onClick={()=>this.props.Click({spuId,skuId})} key={index}>
                 <div className="General-box-item-img">
                     <img src={item.picSrc || item.imgUrl} alt="图片" />
                 </div>

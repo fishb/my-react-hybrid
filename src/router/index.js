@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter , Route} from 'react-router-dom';
+import { BrowserRouter , Route, HashRouter} from 'react-router-dom';
 import Footer from '@/components/Footer';
 // 页面
 import Home from '@/view/home/home';
@@ -9,7 +9,7 @@ import Choose from '@/view/choose/choose';
 import GoodsDetails from '@/view/goods/goodsdetails';
 export default class RouterConfig extends React.Component{
     render() {
-        return <BrowserRouter>
+        return <HashRouter>
         <main className="route-box">
           <Route path="/" exact component={Home}/>
           <Route path="/cart" exact component={Cart}/>
@@ -18,6 +18,6 @@ export default class RouterConfig extends React.Component{
           <Route path="/goodsdetails" exact component={GoodsDetails} />
         </main>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     }
 }
