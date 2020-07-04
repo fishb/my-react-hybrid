@@ -34,6 +34,7 @@
         flex-wrap: wrap;
         &-item{
             width: 48%;
+            text-align: center;
             @include flexs();
             background: #ffffff;
             border-radius: pxTorem(4);
@@ -50,15 +51,30 @@
                     height: 100%;
                 }
             }
+            &.width100{
+                width: 100%;
+                .General-box-item-img{
+                    width: 100%;
+                }
+            }
             &-title{
                 width: 100%;
                 padding: 0 pxTorem(19);
-                margin: pxTorem(15) 0;
+                margin: pxTorem(15) 0 0;
                 font-size: pxTorem(32);
                 font-family: MicrosoftYaHei;
                 font-weight: bold;
                 color: #3D3D3D;
                 @include wrap();
+            }
+            &-desc {
+                width: 100%;
+                padding: 0 pxTorem(19);
+                margin: pxTorem(15) 0 0;
+                font-size: pxTorem(24);
+                font-family: MicrosoftYaHei;
+                font-weight: bold;
+                color: #3D3D3D;
             }
             &-label{
                 width: 100%;
@@ -75,9 +91,10 @@
                 }
             }
             &-price{
+                margin-top: pxTorem(20);
                 width: 100%;
                 padding: pxTorem(10) pxTorem(15);
-                @include flexs(column,flex-start,flex-start);
+                @include flexs(column,flex-start,center);
                 .old-price{
                     font-size: pxTorem(25);
                     font-family: MicrosoftYaHei;

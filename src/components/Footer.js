@@ -38,7 +38,7 @@ class Footer extends React.Component {
             data-seed="logId"
           >
           </TabBar.Item>
-          <TabBar.Item
+          {/* <TabBar.Item
             title="选购"
             key="choose"
             icon={<img src={require('@/assets/icon/sort_off.png')} alt="选购" width="22" height="22"/>}
@@ -47,7 +47,7 @@ class Footer extends React.Component {
             onPress={this._handlePressTab.bind(null, '/choose')}
             data-seed="logId"
           >
-          </TabBar.Item>
+          </TabBar.Item> */}
           <TabBar.Item
             icon={<img src={require('@/assets/icon/cart_off.png')} alt="购物车" width="22" height="22"/>}
             selectedIcon={<img src={require('@/assets/icon/cart_on.png')} alt="购物车" width="22" height="22"/>}
@@ -58,7 +58,7 @@ class Footer extends React.Component {
             data-seed="logId1"
           >
           </TabBar.Item>
-          <TabBar.Item
+          {/* <TabBar.Item
             icon={<img src={require('@/assets/icon/mine_off.png')} alt="我的" width="22" height="22"/>}
             selectedIcon={<img src={require('@/assets/icon/mine_on.png')} alt="我的" width="22" height="22"/>}
             title="我的"
@@ -66,7 +66,7 @@ class Footer extends React.Component {
             selected={this.state.tab === '/mine'}
             onPress={this._handlePressTab.bind(null, '/mine')}
           >
-          </TabBar.Item>
+          </TabBar.Item> */}
         </TabBar>
         )
     }

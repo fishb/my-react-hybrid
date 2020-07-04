@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { homeApi, checkLogin, rushBuy } from '@/api';
 import GeneralList from '@/components/GeneralList';
@@ -7,6 +7,20 @@ import { Carousel } from 'antd-mobile';
 import Swiper from "swiper"
 import "swiper/css/swiper.css"
 import '@/view/home/home.scss';
+
+function Example() {
+    // 声明一个叫 “count” 的 state 变量。
+    const [count, setCount] = useState(0);
+  
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }
 
 class Home extends React.Component {
     homeRef = null //ref接点

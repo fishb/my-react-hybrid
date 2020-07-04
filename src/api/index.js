@@ -20,16 +20,21 @@ export const rushBuy = (data) => {
     })
 }
 
+// 商品详情之前需要获取skuid
+export const getDefaultSkuId = (data) => {
+    return fetch({
+        url: '/apis/wap/fbApi/v1/product/getInfo.json',
+        method: 'GET',
+        params: data
+    })
+}
+
 //商品详情
-export const getDetail = () => {
+export const getDetail = (data) => {
     return fetch({
         url: '/apis/wap/fbApi/v1/product/getDetail.json',
         method: 'GET',
-        params: {
-            spuId: 10002425,
-            skuId: 104131,
-            t: new Date().getTime()
-        }
+        params: data
     })
 }
 

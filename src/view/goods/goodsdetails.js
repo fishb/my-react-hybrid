@@ -4,13 +4,14 @@ import HybridTitle from '@/components/HybridTitle';
 import HybridPopup from '@/components/HybridPopup';
 import { Carousel, Radio, List } from 'antd-mobile';
 import '@/view/goods/goodsdetails.scss';
-import { getDetail } from '@/api';
+import { getDetail, getDefaultSkuId } from '@/api';
 
 const RadioItem = Radio.RadioItem;
 export default class GoodsDetails extends React.Component {
     constructor(props) {
         super(props)
         this.detailsRef = null;
+        this.query = this.props.history.location.state;
         this.state = {
             type: '',
             hasStatus: true,
@@ -18,7 +19,7 @@ export default class GoodsDetails extends React.Component {
             colorOpacity: 0,
             titleTab: ['商品', '评价', '详情', '推荐'],
             tabIndex: 0,
-            imgList: ['https://shopstatic.vivo.com.cn/vivoshop/commodity/24/10001524_1584199444551_750x750.png.webp', 'https://shopstatic.vivo.com.cn/vivoshop/commodity/24/10001524_1584199444268_750x750.png.webp', 'https://shopstatic.vivo.com.cn/vivoshop/commodity/24/10001524_1584199443588_750x750.png.webp', 'https://shopstatic.vivo.com.cn/vivoshop/commodity/24/10001524_1584199443853_750x750.png.webp'],
+            imgList: ['https://via.placeholder.com/750?text=[react实现vivo商城]'],
             listbox: {
                 name: '为你推荐',
                 list: [{
@@ -48,14 +49,21 @@ export default class GoodsDetails extends React.Component {
                     recallSource: "1",
                     id: 101406
                 }]
-            }
+            },
+            result: {}
         }
     }
-    _getDetail = () => {
-        getDetail().then(res => {
-            this.setState({
-                result: res.data || {}
-            })
+    _getDetail = async () => {
+        let data = this.query;
+        if(!this.query.skuId){
+            let defaults = await getDefaultSkuId(this.query);
+            data = {...this.query,skuId: defaults.data.defaultSkuId}
+        }
+        let res = await getDetail(data);
+        let result = res.data[data.skuId];
+        this.setState({
+            imgList: result.imageInfos.map(i=>i.bigPic),
+            result: res.data[data.skuId] || {}
         })
     }
     changeTab = (index) => {
@@ -203,7 +211,7 @@ export default class GoodsDetails extends React.Component {
                         <span className="yen">¥</span>1098
                         </span>
                 </div>
-                <span className="detail-info-title">vivo U3x 6GB+64GB 深湖蓝 </span>
+                <span className="detail-info-title">{this.state.result.skuName || ""}</span>
                 <p className="detail-info-sale">
                     <span className="sale-point">[赠组合配件券]</span>
                         5000mAh大电池，18W双引擎闪充，骁龙665八核处理器。</p>
