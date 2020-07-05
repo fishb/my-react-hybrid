@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import HybridTitle from '@/components/HybridTitle';
 // import GeneralList from '@/components/GeneralList';
 import HybridPopup from '@/components/HybridPopup';
 import { Carousel, Radio, List } from 'antd-mobile';
 import '@/view/goods/goodsdetails.scss';
 import { getDetail, getDefaultSkuId } from '@/api';
-
+import qs from 'qs';
 const RadioItem = Radio.RadioItem;
 export default class GoodsDetails extends React.Component {
     constructor(props) {
         super(props)
+        this.Ref = null;
         this.detailsRef = null;
-        this.query = this.props.history.location.state;
+        this.query = qs.parse(this.props.history.location.search.slice(1));
         this.state = {
             type: '',
             hasStatus: true,
@@ -50,7 +51,12 @@ export default class GoodsDetails extends React.Component {
                     id: 101406
                 }]
             },
-            result: {}
+            result: {
+                videoInfo: {
+                    bigCover: 'https://via.placeholder.com/750?text=[react实现vivo商城]'
+                }
+            },
+            playVideo: false
         }
     }
     _getDetail = async () => {
@@ -116,24 +122,37 @@ export default class GoodsDetails extends React.Component {
     popup = (typeShow, slot) => {
         return <HybridPopup boxWidth="100%" boxHeight="auto" type="bottom" Popup={() => { this.setState({ type: '' }) }} show={this.state.type === typeShow} slot={slot} />
     }
+    play = () => {
+        this.setState({playVideo: true}) 
+        this.Ref.play()
+    }
     //商品图片
     detailRender = () => {
         return <Carousel
             autoplay={false}
             infinite
         >
-            {this.state.imgList.map((val, valIndex) => (
+            {[this.state.result.videoInfo,...this.state.imgList].filter(i=>i).map((val, valIndex) => (
                 <a
                     key={valIndex}
-                    href="http://www.alipay.com"
+                    href="javascript:void(0);"
                     style={{ display: 'inline-block', width: '100%' }}
+                    onClick={()=>this.play()}
                 >
-                    <img
-                        src={val}
-                        alt=""
-                        style={{ width: '100%', verticalAlign: 'top' }}
-                        className="goodsdetails_img"
-                    />
+                    {
+                        <Fragment>
+                            <img
+                                src={val.bigCover || val || 'https://via.placeholder.com/750?text=[react实现vivo商城]'}
+                                name={val.bigCover? 'video' : 'image'}
+                                style={{ width: '100%', verticalAlign: 'top' }}
+                                className="goodsdetails_img"
+                                style={{display: val.bigCover && !this.state.playVideo ? 'block' : 'none'}}
+                            />
+                            {
+                                val.bigCover ? <video style={{display: val.bigCover && this.state.playVideo ? 'block':'none'}} ref={e => this.Ref = e} src={this.state.result.videoInfo.videoUrl}></video> : null
+                            }
+                        </Fragment>
+                    }
                 </a>
             ))}
         </Carousel>
@@ -205,16 +224,13 @@ export default class GoodsDetails extends React.Component {
             <div className="detail-info">
                 <div className="detail-info-price">
                     <strong className="normal">
-                        <span className="yen">¥</span>999
+                        <span className="yen">¥</span>{this.state.result.salePrice || ""}
                         </strong>
-                    <span className="normal line-through">
-                        <span className="yen">¥</span>1098
-                        </span>
                 </div>
                 <span className="detail-info-title">{this.state.result.skuName || ""}</span>
                 <p className="detail-info-sale">
-                    <span className="sale-point">[赠组合配件券]</span>
-                        5000mAh大电池，18W双引擎闪充，骁龙665八核处理器。</p>
+                    <span className="sale-point">[{this.state.result.promotion || ''}]</span>
+                    {this.state.result.brief || ""}</p>
             </div>
             {this.specsRender()}
             {/* {

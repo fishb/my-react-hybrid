@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter , Route, HashRouter} from 'react-router-dom';
+import { Route, HashRouter} from 'react-router-dom';
 import Footer from '@/components/Footer';
 // 页面
 import Home from '@/view/home/home';

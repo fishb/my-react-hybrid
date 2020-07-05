@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import qs from 'qs';
 import { homeApi, checkLogin, rushBuy } from '@/api';
 import GeneralList from '@/components/GeneralList';
 import HybridTitle from '@/components/HybridTitle';
@@ -59,7 +60,7 @@ class Home extends React.Component {
     goGoods = (query) => {
         this.props.history.push({
             pathname: '/goodsdetails',
-            state: query
+            search: qs.stringify(query)
         })
     }
     //多个模块的列表请求
